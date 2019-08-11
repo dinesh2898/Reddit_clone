@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   #devise_for :users
   devise_for :users do
   	get '/users/sign_out' => 'devise/sessions#destroy'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   		get "like", to: "links#upvote"
   		get "dislike", to: "links#downvote"
   	end
+    resources :comments
   end
 
   root to: "links#index"
